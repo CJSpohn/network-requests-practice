@@ -23,3 +23,20 @@
 .clear {
   background-color: cornflowerblue;
 }
+
+.add-data-btn {
+  width: 50%;
+  background-color: chocolate;
+}
+
+.add-data {
+  text-align: center;
+  width: 100%;
+}
+
+.users-input {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

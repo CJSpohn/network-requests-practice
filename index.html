@@ -28,6 +28,28 @@
       <button class="btn clear js-animals-clear">Clear Data</button>
     </div>
   </div>
+  <section class="add-data js-add-data">
+    <h1>Add Your Own Data!</h1>
+    <input type="radio" id="users" name="data" value="users" checked>
+    <label for="users">Users</label><br>
+    <input type="radio" id="teams" name="data" value="teams">
+    <label for="users">Teams</label><br>
+    <input type="radio" id="animals" name="data" value="animals">
+    <label for="users">Animals</label>
+
+    <section class="users-input">
+      <label for="id">Id (Number)</label>
+      <input type="text" id="id" required><br>
+      <label for="name">Name</label>
+      <input type="text" id="name" required><br>
+      <label for="status">Status (online or offline)</label>
+      <input type="text" id="status" required><br>
+      <label for="interests">Interests</label>
+      <input type="text" id="interests" required><br>
+    </section>
+
+    <button class="btn add-data-btn js-add-data-btn">Add Data</button>
+  </section>
   <script src="scripts.js"></script>
 </body>
 </html>
