@@ -1,0 +1,51 @@
+.container {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.btn {
+  margin-bottom: 5px;
+  width: 80%;
+  height: 50px;
+  background-color: mediumpurple;
+}
+
+.clear {
+  background-color: cornflowerblue;
+}
+
+.add-data-btn {
+  width: 50%;
+  background-color: chocolate;
+}
+
+.delete-btn {
+  background-color: darkred;
+  width: 50%;
+}
+
+.add-data {
+  text-align: center;
+  width: 100%;
+}
+
+.users-input {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1em;
+}

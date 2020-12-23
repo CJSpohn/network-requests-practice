@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Network Request Practice</title>
+</head>
+<body>
+  <div class="container">
+    <div class="display">
+      <h1>Users</h1>
+      <p class="users"></p>
+      <button class="btn js-users-btn">Get Data</button>
+      <button class="btn clear js-users-clear">Clear Display</button>
+    </div>
+    <div class="display">
+      <h1>Sports Teams</h1>
+      <p class="teams"></p>
+      <button class="btn js-teams-btn">Get Data</button>
+      <button class="btn clear js-teams-clear">Clear Display</button>
+    </div>
+    <div class="display">
+      <h1>Animals</h1>
+      <p class="animals"></p>
+      <button class="btn js-animals-btn">Get Data</button>
+      <button class="btn clear js-animals-clear">Clear Display</button>
+    </div>
+  </div>
+  <section class="add-data js-add-data">
+    <h1>Add Your Own Data!</h1>
+
+    <input class="radio" type="radio" id="users" name="data" checked="true">
+    <label for="users">Users</label><br>
+    <input class="radio" type="radio" id="teams" name="data" >
+    <label for="users">Teams</label><br>
+    <input class="radio" type="radio" id="animals" name="data" >
+    <label for="users">Animals</label>
+
+    <section class="users-input">
+      <label class="id-label" for="id">Id (Number)</label>
+      <input type="text" id="id" required><br>
+      <label class="name-label" for="name">Name</label>
+      <input type="text" id="name" required><br>
+      <label class="third-label" for="status">Status (online or offline)</label>
+      <input type="text" id="status" required><br>
+      <label class="fourth-label"for="interests">Interests</label>
+      <input type="text" id="interests" required><br>
+    </section>
+    <button class="btn add-data-btn js-add-data-btn">Add Data</button>
+    <h1>Delete Some Data!</h1>
+    <h2>Select the input category to delete and enter an id corresponding to the item to delete</h2>
+    <button class="btn delete-btn js-delete-btn">Delete Data!</button>
+  </section>
+  <script src="scripts.js"></script>
+</body>
+</html>
