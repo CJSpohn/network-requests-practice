@@ -7,6 +7,7 @@ const teamsBtn = document.querySelector('.js-teams-btn');
 const animalsBtn = document.querySelector('.js-animals-btn');
 
 const addDataBtn = document.querySelector('.js-add-data-btn')
+const deleteBtn = document.querySelector('.js-delete-btn')
 
 const usersClearBtn = document.querySelector('.js-users-clear');
 const teamsClearBtn = document.querySelector('.js-teams-clear');
@@ -14,8 +15,10 @@ const animalsClearBtn = document.querySelector('.js-animals-clear');
 
 const userId = document.querySelector('#id');
 const userName = document.querySelector('#name');
-const userStatus = document.querySelector('#status');
-const userInterests = document.querySelector('#interests');
+const thirdInput = document.querySelector('#status');
+const fourthInput = document.querySelector('#interests');
+
+const radios = document.querySelectorAll('input[name="data"]')
 
 
 function getData(url) {
@@ -26,20 +29,20 @@ function getData(url) {
   return promise
 }
 
-function postData(url, data) {
-  fetch(url, {
+const postData = async (url, data) => {
+  const response = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      id: data.id,
-      name: data.name,
-      status: data.status,
-      interest: data.intersts
-    })
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   })
-    .then(response => response.json())
+  return response.json()
+}
+
+const removeData = async (url, id) => {
+  return fetch(url + '/' + id, {
+    method: 'DELETE',
+  })
+  .then(response => response.json());
 }
 
 const getUsersData = async () => {
@@ -82,16 +85,56 @@ function clearData()  {
   }
 }
 
-function makeData() {
-  const item = {
-    id: userId.value,
-    name: userName.value,
-    status: userStatus.value,
-    interests: userInterests.value
+const makeItem = (att1, att2, att3, att4) => {
+  if (radios[0].checked) {
+    return { id: att1, name: att2, status: att3, interests: att4 }
+  } else if (radios[1].checked) {
+    return { id: att1, name: att2, head_coach: att3, sport: att4 }
+  } else if (radios[2].checked) {
+    return { id: att1, name: att2, diet: att3, fun_fact: att4 }
   }
-  postData('http://localhost:3001/api/v1/users', item)
 }
 
+const updateText = () => {
+  const thirdLabel = document.querySelector('.third-label')
+  const fourthLabel = document.querySelector('.fourth-label')
+  if (radios[0].checked) {
+    thirdLabel.innerText = 'Status'
+    fourthLabel.innerText = 'Interests'
+  } else if (radios[1].checked) {
+    thirdLabel.innerText = 'Head Coach'
+    fourthLabel.innerText = 'Sport'
+  } else if (radios[2].checked) {
+    thirdLabel.innerText = 'Diet'
+    fourthLabel.innerText = 'Fun Fact'
+  }
+}
+
+const makeData = () => {
+  let url;
+  if (radios[0].checked) {
+    url = 'http://localhost:3001/api/v1/users'
+  } else if (radios[1].checked) {
+    url = 'http://localhost:3001/api/v1/sport-teams'
+  } else if (radios[2].checked) {
+    url = 'http://localhost:3001/api/v1/animals'
+  }
+  let item = makeItem(userId.value, userName.value, thirdInput.value, fourthInput.value);
+  postData(url, item)
+}
+
+const deleteData = () => {
+  let url;
+  number = userId.value;
+  if (radios[0].checked) {
+    url = 'http://localhost:3001/api/v1/users'
+  } else if (radios[1].checked) {
+    url = 'http://localhost:3001/api/v1/sport-teams'
+  } else if (radios[2].checked) {
+    url = 'http://localhost:3001/api/v1/animals'
+  }
+  removeData(url, number)
+}
 
 
 usersBtn.addEventListener('click', getUsersData)
@@ -103,3 +146,8 @@ teamsClearBtn.addEventListener('click', clearData)
 animalsClearBtn.addEventListener('click', clearData)
 
 addDataBtn.addEventListener('click', makeData)
+deleteBtn.addEventListener('click', deleteData)
+
+radios.forEach(radio => {
+  radio.addEventListener('change', updateText)
+})

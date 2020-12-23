@@ -29,6 +29,11 @@
   background-color: chocolate;
 }
 
+.delete-btn {
+  background-color: darkred;
+  width: 50%;
+}
+
 .add-data {
   text-align: center;
   width: 100%;
@@ -39,4 +44,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h2 {
+  font-size: 1em;
 }
